@@ -23,11 +23,12 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
-            app(UserController::class)->main();
-            return $next($request);
-        });
+        // $this->middleware(function ($request, $next) {
+        //     app(UserController::class)->main();
+        //     return $next($request);
+        // });
     }
+
     public function admin_login(Request $request)
     {
         if (FacadesRequest::isMethod('get')) {

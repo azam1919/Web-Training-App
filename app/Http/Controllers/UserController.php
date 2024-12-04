@@ -21,12 +21,15 @@ class UserController extends Controller
     public function main()
     {
         $r_id = Session::get('r_id');
+
         $modules = function ($query) use ($r_id) {
             $query->where('permissions.r_id', $r_id);
         };
+
         $module_groups = ModulesGroup::whereHas('modules.permissions', $modules)->orwhereDoesntHave('modules.permissions', $modules)
             ->with('modules.permissions', $modules)
             ->get();
+
         $Alertstatuses = Alert::where([
             ['status', '=', 1],
         ])->count();
