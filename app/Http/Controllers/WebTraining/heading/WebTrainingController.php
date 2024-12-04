@@ -16,12 +16,8 @@ class WebTrainingController extends Controller
 {
     public function index(Request $request)
     {
-        if (FacadesRequest::isMethod('get')) {
-            $web_trainings = WebTraining::get();
-            return view('admin.web-training.index', ['web_trainings' => $web_trainings]);
-        } elseif (FacadesRequest::isMethod('post')) {
-        } else {
-        }
+        $web_trainings = WebTraining::get();
+        return view('admin.web-training.index', ['web_trainings' => $web_trainings]);
     }
     public function show()
     {

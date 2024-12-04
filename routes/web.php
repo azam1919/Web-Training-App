@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ImageController;
-use App\Http\Controllers\WebTraining\heading\WebTrainingController as HeadingWebTrainingController;
-use App\Http\Controllers\WebTraining\tutorial\WebTrainingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\WebTraining\tutorial\WebTrainingController;
+use App\Http\Controllers\WebTraining\heading\WebTrainingController as HeadingWebTrainingController;
 
 /*
 |--------------------------------------------------------------------------

@@ -275,7 +275,7 @@
             $('#imagelist li img').click(function(e) {
                 var imagepath = $(this).attr('src');
                 var _this = $(this).parents('li');
-                // alert(imagepath);    
+                // alert(imagepath);
                 $('.editimage img').attr('src', imagepath);
                 $('.editimage img').load(document.URL + '.editimage img');
                 var img_id = $('#img_id').val(_this.find('.upload_img_id').val());
@@ -290,7 +290,7 @@
                 // console.log(description);
             });
             $('.uppy-c-btn-primary').click(function() {
-                alerrt('jasdgf');
+                alert('jasdgf');
             });
             $(function() {
                 $("#draggable").draggable();
@@ -298,57 +298,57 @@
         </script>
 
         <script type="module">
-        import {
-            Uppy,
-            Dashboard,
-            XHRUpload,
-            GoldenRetriever,
-            Tus
-        } from "https://releases.transloadit.com/uppy/v3.0.1/uppy.min.mjs"
-        var uppy = new Uppy()
-            .use(Dashboard, {
-                inline: true,
-                target: '#drag-drop-area',
-                recoveredAllFiles: 'We restored all files. You can now resume the upload.',
-                sessionRestored: 'Session restored',
-            })
-            .use(XHRUpload, {
-                endpoint: "{{ route('tutorial.create.store') }}",
-                headers: {
-                    'X-CSRF-Token': " {{ csrf_token() }} "
-                },
-                formData: true,
-                fieldName: 'fancy_upload[]',
+            import {
+                Uppy,
+                Dashboard,
+                XHRUpload,
+                GoldenRetriever,
+                Tus
+            } from "https://releases.transloadit.com/uppy/v3.0.1/uppy.min.mjs"
+            var uppy = new Uppy()
+                .use(Dashboard, {
+                    inline: true,
+                    target: '#drag-drop-area',
+                    recoveredAllFiles: 'We restored all files. You can now resume the upload.',
+                    sessionRestored: 'Session restored',
+                })
+                .use(XHRUpload, {
+                    endpoint: "{{ route('tutorial.create.store') }}",
+                    headers: {
+                        'X-CSRF-Token': " {{ csrf_token() }} "
+                    },
+                    formData: true,
+                    fieldName: 'fancy_upload[]',
 
-            })
-        .use(Tus, {
-                endpoint: 'https://tusd.tusdemo.net/files/', // use your tus endpoint here
-                retryDelays: [0, 1000, 3000, 5000],
-            })
-            .use(GoldenRetriever)
-        uppy.on('complete', (result) => {
-            console.log('Upload complete! We’ve uploaded these files:', result.successful);
-            $('#upload_images #imagelist').empty().load(document.URL + '#upload_images #imagelist li');            
-        });
-    </script>
+                })
+                .use(Tus, {
+                    endpoint: 'https://tusd.tusdemo.net/files/', // use your tus endpoint here
+                    retryDelays: [0, 1000, 3000, 5000],
+                })
+                .use(GoldenRetriever)
+            uppy.on('complete', (result) => {
+                console.log('Upload complete! We’ve uploaded these files:', result.successful);
+                $('#upload_images #imagelist').empty().load(document.URL + '#upload_images #imagelist li');
+            });
+        </script>
 
         <!-- JCrop -->
         <script type="module">
-        import Cropper from 'cropperjs';
-        const image = document.getElementById('image');
-        const cropper = new Cropper(image, {
-            onChange: updatePreview,
-            onSelect: updatePreview,
-            onRelease: resetCoords,
-            aspectRatio: 16 / 9,
+            import Cropper from 'cropperjs';
+            const image = document.getElementById('image');
+            const cropper = new Cropper(image, {
+                onChange: updatePreview,
+                onSelect: updatePreview,
+                onRelease: resetCoords,
+                aspectRatio: 16 / 9,
 
-            crop(event) {},
-            function() {
-                jCropAPI = this
-                jCropAPI.removeAttr('style');
-            }
-        });
-    </script>
+                crop(event) {},
+                function() {
+                    jCropAPI = this
+                    jCropAPI.removeAttr('style');
+                }
+            });
+        </script>
     @endsection
     <script src="https://transloadit.edgly.net/releases/uppy/v1.6.0/uppy.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

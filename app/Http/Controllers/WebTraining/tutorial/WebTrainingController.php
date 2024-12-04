@@ -30,9 +30,13 @@ class WebTrainingController extends Controller
             $web_trainings = WebTraining::where('id', $web_tr_id)->select('heading')->get();
             // dd($heading->toArray());
             $images = WebTrainingAsset::where('web_tr_id', $web_tr_id)->get();
-            return view('admin.web-training.tutorial.create', ['web_trainings' => $web_trainings, 'images' => $images, 'web_trainings_asset' => json_decode($web_trainings_asset, true)]);
+            return view('admin.web-training.tutorial.create', [
+                'web_trainings' => $web_trainings,
+                'images' => $images,
+                'web_trainings_asset' => json_decode($web_trainings_asset, true)
+            ]);
         } else {
-            return back();
+            dd('else');
         }
     }
     public function store(Request $request)
@@ -52,8 +56,8 @@ class WebTrainingController extends Controller
                 $response = $file->move($upload_path, $image_full_name);
                 //    return $response;
                 //    $name = time().'.'.$file->extension();
-                //    $file->move(public_path().'/dist/img/tutorial', $name);  
-                //    $data[] = $name;  
+                //    $file->move(public_path().'/dist/img/tutorial', $name);
+                //    $data[] = $name;
                 $fancy_upload[] = $image_url;
             }
 
@@ -104,10 +108,10 @@ class WebTrainingController extends Controller
         // $web_trainings->web_tr_id =  WebTraining::with('web_trainings_assets')->where('id', $request->id)->get();
         // $web_trainings->web_tr_id = 9;
         // $web_trainings->image=json_encode($data);
-        // $web_trainings->image = $request->implode('|' , $fancy_upload); 
+        // $web_trainings->image = $request->implode('|' , $fancy_upload);
         // $web_trainings->save();
 
-        // Azam's code 
+        // Azam's code
 
         // if (FacadesRequest::isMethod('post')) {
         //     if ($request->hasFile('fancy_upload')) {
